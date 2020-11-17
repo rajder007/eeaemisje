@@ -8,14 +8,7 @@ use_r("fun_pack")
 
 load_all()
 
-
-
-fun_pack()
-
-fun_pack(a = 1, b = 500, d = 23)
-
-
-
+save(wskazniki, file= "data/wskazniki.rda")
 
 
 exists("fun_pack", where = globalenv(), inherits = FALSE)
