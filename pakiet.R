@@ -46,8 +46,6 @@ check()
 
 install.packages("digest")
 
-use_package("base")
-use_package("stats")
 use_package("dplyr")
 
 load_all()

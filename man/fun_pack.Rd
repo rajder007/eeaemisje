@@ -22,5 +22,5 @@ data frame z obliczona emisja
 Funkcja liczaca emisje
 }
 \examples{
-fun_pack(dane, kategoria, euro, mode, substancja )
+
 }

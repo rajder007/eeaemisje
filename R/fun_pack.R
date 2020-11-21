@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#'fun_pack(dane, kategoria, euro, mode, substancja )
+#'
 
 fun_pack <- function(dane = input,
                      kategoria = "Passenger Cars",
