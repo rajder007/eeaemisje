@@ -1,5 +1,6 @@
 library(devtools)
 library(tidyverse)
+library(roxygen2)
 
 use_git()
 
@@ -55,3 +56,31 @@ document()
 install()
 
 check()
+
+C:\Users\Admin\Desktop\inwentaryzacja_emisji\zajecia1
+
+
+library(openxlsx)
+library(tidyverse)
+
+
+# 1. Wczytanie wskazników  ------------------------------------------------
+
+nazwa <- "C:/Users/Admin/Desktop/inwentaryzacja_emisji/zajecia1/dane.xlsx"
+
+wskazniki <- openxlsx::read.xlsx(xlsxFile = nazwa)
+
+wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
+
+wskazniki <- wskazniki %>%
+  select(-`EF.[g/km].or.ECF.[MJ/km]`,
+         -`Min.Speed.[km/h]`,
+         -`Max.Speed.[km/h]`,
+         -Road.Slope,
+         -Load)
+
+colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
+
+save(wskazniki, file = "data/wskazniki.rda")
+
+usethis::use_r("data.R")
