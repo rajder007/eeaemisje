@@ -7,10 +7,10 @@
 #' @param substancja
 #'
 #' @return data frame z obliczona emisja
+#'
+#'
+#'
 #' @export
-#'
-#' @examples
-#'
 
 fun_pack <- function(dane = input,
                      kategoria = "Passenger Cars",
