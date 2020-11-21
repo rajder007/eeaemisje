@@ -21,6 +21,3 @@ data frame z obliczona emisja
 \description{
 Funkcja liczaca emisje
 }
-\examples{
-
-}

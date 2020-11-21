@@ -4,7 +4,6 @@
 #'
 #'@doctype package
 #'@name newpack
-#'@import magrittr
 #'@importFrom dplyr filter inner_join mutate select
 #'
 #'
