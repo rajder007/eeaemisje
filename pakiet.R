@@ -57,7 +57,7 @@ install()
 
 check()
 
-C:\Users\Admin\Desktop\inwentaryzacja_emisji\zajecia1
+
 
 
 library(openxlsx)
