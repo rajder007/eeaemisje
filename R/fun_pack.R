@@ -14,20 +14,23 @@
 
 fun_pack <- function(dane = input,
                      kategoria = "Passenger Cars",
-                     #paliwo = "Petrol",
-                     #segment = "Mini",
                      euro = "Euro 5",
-                     #technologia = "GDI",
                      mode = "",
                      substancja = c("EC", "CO")) {
 
   # Zabezpieczenia argumentów funkcji i danych wejscioweych.
 
+   input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
+                      Segment = sample(c("Mini", "Small", "Medium", "Large-SUV-Executive"),
+                                       size = 50, replace = T),
+                      paliwo = "Petrol",
+                      technologia = "GDI")
+
+   input$Segment <- as.character(input$Segment)
+
     out <- wskazniki
     out <- dplyr::filter(Category == kategoria)
-    out <- dplyr::filter(Fuel == paliwo)
     out <- dplyr::filter(Euro.Standard == euro)
-    out <- dplyr::filter(Technology == technologia)
     out <- dplyr::filter(Pollutant == substancja)
     out <- dplyr::filter(Mode == mode)
 
