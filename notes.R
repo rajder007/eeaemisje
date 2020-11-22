@@ -83,3 +83,5 @@ colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
 save(wskazniki, file = "data/wskazniki.rda")
 
 usethis::use_r("data.R")
+
+
