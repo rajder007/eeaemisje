@@ -57,7 +57,7 @@ install()
 
 
 check()
-
+fun_pack()
 
 library(openxlsx)
 library(tidyverse)
