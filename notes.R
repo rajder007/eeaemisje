@@ -24,7 +24,7 @@ load_all()
 #wczytanie funkcji w innym projekcie
 source(file = "R/fun_pack.R")
 
-rm(fun_pack)
+rm(list = c("eea_szaco_emisji"))
 
 load_all()
 check()
