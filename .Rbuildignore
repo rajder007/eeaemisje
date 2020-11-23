@@ -1,4 +1,5 @@
 ^pakiet\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
 ^notes$
 ^LICENSE\.md$

@@ -42,7 +42,7 @@ load_all()
 fun_pack()
 
 
-
+wskazniki
 check()
 
 install.packages("digest")

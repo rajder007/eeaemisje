@@ -1,18 +1,27 @@
-#' Funkcja liczaca emisje
+#' Funkcja liczaca emisje. Na podstawie danych z EEA.
 #'
-#' @param dane
-#' @param kategoria
-#' @param euro
-#' @param mode
-#' @param substancja
+#' Przyjmuje nastpujepujace argumenty:
+#'
+#' @param dane - data frame, sklada sie z 50 wierszy o kolumnach: (Nat, segment, paliwo, technologia)
+#' - nat, to liczba losowo generowana
+#' - segment, character w tej kolumnie losowane sa wartosci sposrod 4 dostepnych
+#' parametrów: "Mini", "Small", "Medium", "Large-SUV-Executive"
+#' - paliwo, okresla sie rodzaj paliwa moze przyjmowac
+#' - technologia, okresla rodzaj technologii oczyszczania spalin moze przyjmowac
+#' @param kategoria - character okresla kategorie pojazdu
+#' @param euro - Europejski standard emisji spalin
+#' @param mode - zawiera rodzaj drogi
+#' @param substancja - wektor character, przyjmuje substancje dla ktorych chcemy szacowac emisje
+#' aby zobaczyc liste dostepnych wartosci dla poszczegolnych parametrow nalezy uzyc
+#' funkcji unique dla danych "wskazniki"
+#' np. unique(wskazniki$Category)
 #'
 #' @return data frame z obliczona emisja
 #'
 #'
-#'
 #' @export
 
-fun_pack <- function(dane = input,
+eea_szaco_emisji <- function(dane = input,
                      kategoria = "Passenger Cars",
                      euro = "Euro 5",
                      mode = "",
