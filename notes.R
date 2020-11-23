@@ -39,7 +39,7 @@ use_mit_license("Krzysztof Zaczyk")
 document()
 load_all()
 
-fun_pack()
+eea_szaco_emisji()
 
 
 wskazniki

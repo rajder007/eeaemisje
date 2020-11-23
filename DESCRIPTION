@@ -17,5 +17,6 @@ LazyData: true
 Imports: 
     magrittr,
     dplyr,
+    stats,
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
