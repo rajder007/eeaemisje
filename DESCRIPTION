@@ -1,4 +1,4 @@
-Package: eea_emisje
+Package: eeaemisje
 Type: Package
 Title: Szacowanie emisji z danych EEA.
 Version: 0.0.0.9000
