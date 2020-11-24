@@ -84,4 +84,5 @@ save(wskazniki, file = "data/wskazniki.rda")
 
 usethis::use_r("data.R")
 
+install_git("https://github.com/rajder007/eeaemisje")
 

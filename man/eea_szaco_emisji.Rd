@@ -18,8 +18,8 @@ eea_szaco_emisji(
 \item nat, to liczba losowo generowana
 \item segment, character w tej kolumnie losowane sa wartosci sposrod 4 dostepnych
 parametrów: "Mini", "Small", "Medium", "Large-SUV-Executive"
-\item paliwo, okresla sie rodzaj paliwa moze przyjmowac
-\item technologia, okresla rodzaj technologii oczyszczania spalin moze przyjmowac
+\item paliwo, okresla sie rodzaj paliwa
+\item technologia, okresla rodzaj technologii oczyszczania spalin
 }}
 
 \item{kategoria}{\itemize{
