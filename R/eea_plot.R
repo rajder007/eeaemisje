@@ -12,9 +12,10 @@ eea_plot <- function(wynik=out)
 {
 
  ggplot(data = wynik, aes(x =Nat , y = Emisja)) +
-  geom_point(alpha = 0.7, aes(color = Segment)) +
-  labs(title = "Wykres rozrzutu Nateżenie do Emisji wg. segmentu auta") +
-  labs(color = "Segment") -> out
+  geom_point(alpha = 0.7, aes(color = Pollutant)) +
+  labs(title = "Wykres rozrzutu Nateżenie do Emisji
+       wg. rodzaju zanieczyszenia") +
+  labs(color = "Pollutant") -> out
 return(out)
 }
 
