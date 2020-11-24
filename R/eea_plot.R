@@ -1,9 +1,8 @@
 #' Funkcja wyswietla wykres na podstawie wyniku funkcji "eea_szaco_emisji"
 #'
-#' Przyjmuje nastpujepujace argumenty:
+#' Przyjmuje nastepujace argumenty:
 #'
 #' @param wynik - data frame, jest to wynik funkcji "eea_szaco_emisji"
-
 #' @return plot
 #'
 #'
