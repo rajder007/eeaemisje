@@ -6,8 +6,8 @@
 #' - nat, to liczba losowo generowana
 #' - segment, character w tej kolumnie losowane sa wartosci sposrod 4 dostepnych
 #' parametrów: "Mini", "Small", "Medium", "Large-SUV-Executive"
-#' - paliwo, okresla sie rodzaj paliwa moze przyjmowac
-#' - technologia, okresla rodzaj technologii oczyszczania spalin moze przyjmowac
+#' - paliwo, okresla sie rodzaj paliwa
+#' - technologia, okresla rodzaj technologii oczyszczania spalin
 #' @param kategoria - character okresla kategorie pojazdu
 #' @param euro - Europejski standard emisji spalin
 #' @param mode - zawiera rodzaj drogi
@@ -27,7 +27,7 @@ eea_szaco_emisji <- function(dane = input,
                      mode = "",
                      substancja = c("EC", "CO")) {
 
-  # Zabezpieczenia argumentów funkcji i danych wejscioweych.
+  if (kategoria != unique(wskazniki$Category){return("Blad, podaj odpowiednia kategorie pojazdu")}
 
   input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
                       Segment = sample(c("Mini", "Small", "Medium", "Large-SUV-Executive"),
