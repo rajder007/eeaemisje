@@ -98,3 +98,4 @@ eea_plot(wynik)
 
 usethis::use_vignette("my-vignette")
 use_readme_rmd()
+
