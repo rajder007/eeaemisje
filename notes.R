@@ -92,3 +92,5 @@ ggplot(data = wynik, aes(x =Nat , y = Emisja)) +
   geom_point(alpha = 0.7, aes(color = Segment)) +
   labs(  title = "Wykres rozrzutu Nateżenie do Emisji wg. segmentu auta") +
   labs(color = "Segment") -> out
+
+
