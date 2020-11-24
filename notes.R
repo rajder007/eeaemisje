@@ -45,9 +45,9 @@ eea_szaco_emisji()
 wskazniki
 check()
 
-install.packages("digest")
 
-use_package("dplyr")
+
+
 
 load_all()
 
@@ -57,7 +57,6 @@ install()
 
 
 check()
-fun_pack()
 
 library(openxlsx)
 library(tidyverse)
@@ -86,3 +85,8 @@ usethis::use_r("data.R")
 
 install_git("https://github.com/rajder007/eeaemisje")
 
+use_r("eea_plot")
+
+wynik <- eea_szaco_emisji()
+
+library(ggplot2)
