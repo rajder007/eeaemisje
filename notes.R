@@ -31,7 +31,7 @@ check()
 
 library(roxygen2)
 
-document()
+
 check()
 
 use_mit_license("Krzysztof Zaczyk")
