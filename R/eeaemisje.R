@@ -1,4 +1,4 @@
-#' eea_emisje: pakiet do pracy z danymi z emisji pobranymi ze strony EEA
+#' eeaemisje: pakiet do pracy z danymi z emisji pobranymi ze strony EEA
 #'
 #' Pakiet sklada sie z 2 funkcji. Do liczenia szacowanej emisji substancji oraz
 #' do wizualizacji wyniku tej funkcji.
