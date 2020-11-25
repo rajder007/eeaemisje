@@ -4,7 +4,7 @@
 #' do wizualizacji wyniku tej funkcji.
 #'
 #'@doctype package
-#'@name eea_emisje
+#'@name eeaemisje
 #'@import magrittr
 #'@importFrom dplyr filter inner_join mutate select
 #'@importFrom stats rnorm

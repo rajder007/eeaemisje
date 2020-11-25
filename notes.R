@@ -84,7 +84,7 @@ install_git("https://github.com/rajder007/eeaemisje")
 
 use_r("eea_plot")
 
-wynik <- eea_szaco_emisji()
+
 
 library(ggplot2)
 
@@ -93,9 +93,19 @@ ggplot(data = wynik, aes(x =Nat , y = Emisja)) +
   labs(  title = "Wykres rozrzutu Nateżenie do Emisji wg. segmentu auta") +
   labs(color = "Segment") -> out
 
-
-eea_plot(wynik)
-
 usethis::use_vignette("my-vignette")
 use_readme_rmd()
+
+input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
+                    Segment = sample(c("Mini", "Small", "Medium", "Large-SUV-Executive"),
+                                     size = 50, replace = T),
+                    paliwo = "Petrol",
+                    technologia = "GDI")
+
+
+eeaemisje
+
+wynik <- eea_szaco_emisji()
+
+eea_plot(wynik)
 

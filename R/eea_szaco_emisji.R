@@ -27,7 +27,6 @@ eea_szaco_emisji <- function(dane = input,
                      mode = "",
                      substancja = c("EC", "CO")) {
 
-
   input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
                       Segment = sample(c("Mini", "Small", "Medium", "Large-SUV-Executive"),
                                        size = 50, replace = T),
