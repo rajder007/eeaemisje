@@ -8,5 +8,5 @@
 #'@import magrittr
 #'@importFrom dplyr filter inner_join mutate select
 #'@importFrom stats rnorm
-#'@importFrom ggplot2 ggplot aes geom_point labs
+#'@importFrom ggplot2 ggplot aes geom_point labs scale_color_brewer theme
 NULL

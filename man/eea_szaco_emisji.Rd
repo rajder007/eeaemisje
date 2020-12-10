@@ -2,10 +2,14 @@
 % Please edit documentation in R/eea_szaco_emisji.R
 \name{eea_szaco_emisji}
 \alias{eea_szaco_emisji}
-\title{Funkcja liczaca emisje. Na podstawie danych z EEA.}
+\title{Funkcja liczaca emisje. Na podstawie danych z EEA.
+Funkcja daje mozliwosc liczenia emisji ze wzgledu na rozne parametry,
+ktore mozna zmieniac dzieki argumentom, ktore funkcja przyjmuje.}
 \usage{
 eea_szaco_emisji(
-  dane = input,
+  input = data.frame(Nat = rnorm(50, mean = 100, sd = 50), Segment = sample(c("Mini",
+    "Small", "Medium", "Large-SUV-Executive"), size = 50, replace = T), paliwo =
+    "Petrol", technologia = "GDI"),
   kategoria = "Passenger Cars",
   euro = "Euro 5",
   mode = "",
@@ -13,7 +17,7 @@ eea_szaco_emisji(
 )
 }
 \arguments{
-\item{dane}{\itemize{
+\item{input}{\itemize{
 \item data frame, sklada sie z 50 wierszy o kolumnach: (Nat, segment, paliwo, technologia)
 \item nat, to liczba losowo generowana
 \item segment, character w tej kolumnie losowane sa wartosci sposrod 4 dostepnych
@@ -35,15 +39,31 @@ parametrów: "Mini", "Small", "Medium", "Large-SUV-Executive"
 }}
 
 \item{substancja}{\itemize{
-\item wektor character, przyjmuje substancje dla ktorych chcemy szacowac emisje
-aby zobaczyc liste dostepnych wartosci dla poszczegolnych parametrow nalezy uzyc
-funkcji unique dla danych "wskazniki"
-np. unique(wskazniki$Category)
+\item character, przyjmuje substancje dla ktorych chcemy
+szacowac emisje, mozna tez podac wektor character
 }}
 }
 \value{
 data frame z obliczona emisja
 }
 \description{
-Przyjmuje nastpujepujace argumenty:
+Funkcja przyjmuje nastepujace argumenty:
+}
+\examples{
+#' ## Pierwszym argumentem jest obiekt data frame o nazwie 'input',
+#bez podania argumentu input- domyslnie zostaje tworzony
+#czesciowo losowy obiekt data frame taki jak ponizej
+
+input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
+                   Segment = sample(c("Mini", "Small", "Medium", "Large-SUV-Executive"),
+                   size = 50, replace = TRUE),
+                   paliwo = "Petrol",
+                   technologia = "GDI")
+
+# Przyklad uzycia
+wynik <- eea_szaco_emisji(input = input,
+                          kategoria = "Passenger Cars",
+                          euro = "Euro 5",
+                          mode = "",
+                          substancja = c("EC", "CO", "NOx", "VOC"))
 }

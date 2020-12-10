@@ -1,15 +1,13 @@
 library(devtools)
 library(tidyverse)
+library(xfun)
 library(roxygen2)
+library(ggplot2)
+
 
 use_git()
 
 use_r("newpack")
-
-
-load_all()
-
-save(wskazniki, file= "data/wskazniki.rda")
 
 
 exists("fun_pack", where = globalenv(), inherits = FALSE)
@@ -19,49 +17,33 @@ rm(fun_pack)
 exists("fun_pack", where = globalenv(), inherits = FALSE)
 
 
-load_all()
-
 #wczytanie funkcji w innym projekcie
 source(file = "R/fun_pack.R")
 
-rm(list = c("eea_szaco_emisji"))
-
-load_all()
-check()
-
-library(roxygen2)
 
 
-check()
 
 use_mit_license("Krzysztof Zaczyk")
 
-document()
-load_all()
-
-eea_szaco_emisji()
-
 
 wskazniki
-check()
 
-
-load_all()
+rm(list = c("eea_szaco_emisji"))
+rm(list = c("eea_plot"))
 
 document()
-
-install()
-
-
 check()
+install()
+load_all()
+
+
 
 library(openxlsx)
-library(tidyverse)
 
 
 # 1. Wczytanie wskazników  ------------------------------------------------
 
-nazwa <- "C:/Users/Admin/Desktop/inwentaryzacja_emisji/zajecia1/dane.xlsx"
+nazwa <- "C:/Users/Admin/Desktop/inwentaryzacjaemisji/zajecia1/dane.xlsx"
 
 wskazniki <- openxlsx::read.xlsx(xlsxFile = nazwa)
 
@@ -104,8 +86,21 @@ input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
 
 
 eeaemisje
+input = c("EC", "CO")
+str(input)
+unique(wskazniki$Pollutant)
+
+wynik <- eea_szaco_emisji(input = input,
+                          kategoria = "Passenger Cars",
+                          euro = "Euro 5",
+                          mode = "",
+                          substancja = c("EC", "CO","NOx", "VOC"))
 
 wynik <- eea_szaco_emisji()
 
-eea_plot(wynik)
+eea_plot(wynik, legenda = "top", paleta = "Set1")
 
+load_all()
+
+
+R.version

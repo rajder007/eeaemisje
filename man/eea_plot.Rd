@@ -2,13 +2,25 @@
 % Please edit documentation in R/eea_plot.R
 \name{eea_plot}
 \alias{eea_plot}
-\title{Funkcja wyswietla wykres na podstawie wyniku funkcji "eea_szaco_emisji"}
+\title{Na podstawie wyniku funkcji "eea_szaco_emisji"
+wyswietla wykres rozrzutu zmiennej natezenie i obliczonej emisji
+z podzialem wedlug rodzaju zanieczyszczenia}
 \usage{
-eea_plot(wynik = out)
+eea_plot(dane = wynik, paleta = "Set1", legenda = "right")
 }
 \arguments{
-\item{wynik}{\itemize{
+\item{dane}{\itemize{
 \item data frame, jest to wynik funkcji "eea_szaco_emisji"
+}}
+
+\item{paleta}{\itemize{
+\item character, argument dzieki któremu mozna zmienic palete barw
+dostepnosc palet mozna sprawdzic w helpie funkcji scale_color_brewer
+}}
+
+\item{legenda}{\itemize{
+\item character, argument zmieniajacy pozycje legendy
+dostepne wartosci to: "none", "left", "right", "bottom", "top"
 }}
 }
 \value{
@@ -16,4 +28,13 @@ plot
 }
 \description{
 Przyjmuje nastepujace argumenty:
+}
+\examples{
+#' ## Zeby uzyc tej funkcji i stworzyc wykres musimy miec wynik obliczony
+#dzieki funkcji 'eea_szaco_emisji'
+
+wynik <- eea_szaco_emisji()
+
+wykres <- eea_plot(dane = wynik, paleta = "Set1", legenda = "right")
+
 }
