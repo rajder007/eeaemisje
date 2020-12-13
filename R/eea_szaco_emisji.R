@@ -1,4 +1,5 @@
 #' Funkcja liczaca emisje. Na podstawie danych z EEA.
+#'
 #' Funkcja daje mozliwosc liczenia emisji ze wzgledu na rozne parametry,
 #' ktore mozna zmieniac dzieki argumentom, ktore funkcja przyjmuje.
 #'

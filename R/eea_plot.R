@@ -1,3 +1,5 @@
+#' Wizualizacja wyniku funkcji "eea_szaco_emisji"
+#'
 #' Na podstawie wyniku funkcji "eea_szaco_emisji"
 #' wyswietla wykres rozrzutu zmiennej natezenie i obliczonej emisji
 #' z podzialem wedlug rodzaju zanieczyszczenia
@@ -26,8 +28,9 @@ eea_plot <- function(dane = wynik, paleta= "Set1", legenda= "right")
 
  ggplot(data = dane, aes(x =Nat , y = Emisja)) +
   geom_point(alpha = 100, aes(color = Pollutant)) +
-  labs(title = "Wykres rozrzutu Nateżenie do Emisji
-       wg. rodzaju zanieczyszenia") +
+  labs(title = "Wykres rozrzutu Nateżenia
+        do Emisji wg.
+        rodzaju zanieczyszenia") +
   labs(color = "Pollutant") +
     scale_color_brewer(palette = paleta) +
   theme(legend.position = legenda) -> out

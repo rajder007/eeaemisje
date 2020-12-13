@@ -2,9 +2,7 @@
 % Please edit documentation in R/eea_szaco_emisji.R
 \name{eea_szaco_emisji}
 \alias{eea_szaco_emisji}
-\title{Funkcja liczaca emisje. Na podstawie danych z EEA.
-Funkcja daje mozliwosc liczenia emisji ze wzgledu na rozne parametry,
-ktore mozna zmieniac dzieki argumentom, ktore funkcja przyjmuje.}
+\title{Funkcja liczaca emisje. Na podstawie danych z EEA.}
 \usage{
 eea_szaco_emisji(
   input = data.frame(Nat = rnorm(50, mean = 100, sd = 50), Segment = sample(c("Mini",
@@ -13,7 +11,7 @@ eea_szaco_emisji(
   kategoria = "Passenger Cars",
   euro = "Euro 5",
   mode = "",
-  substancja = c("EC", "CO")
+  substancja = c("EC", "CO", "NOx", "VOC")
 )
 }
 \arguments{
@@ -47,6 +45,10 @@ szacowac emisje, mozna tez podac wektor character
 data frame z obliczona emisja
 }
 \description{
+Funkcja daje mozliwosc liczenia emisji ze wzgledu na rozne parametry,
+ktore mozna zmieniac dzieki argumentom, ktore funkcja przyjmuje.
+}
+\details{
 Funkcja przyjmuje nastepujace argumenty:
 }
 \examples{

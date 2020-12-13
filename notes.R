@@ -98,8 +98,8 @@ wynik <- eea_szaco_emisji(input = input,
 
 wynik <- eea_szaco_emisji()
 
-eea_plot(wynik, legenda = "top", paleta = "Set1")
-
+plocik <- eea_plot(wynik, legenda = "top", paleta = "Set1")
+str(plocik)
 load_all()
 
 

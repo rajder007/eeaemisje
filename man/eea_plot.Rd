@@ -2,9 +2,7 @@
 % Please edit documentation in R/eea_plot.R
 \name{eea_plot}
 \alias{eea_plot}
-\title{Na podstawie wyniku funkcji "eea_szaco_emisji"
-wyswietla wykres rozrzutu zmiennej natezenie i obliczonej emisji
-z podzialem wedlug rodzaju zanieczyszczenia}
+\title{Wizualizacja wyniku funkcji "eea_szaco_emisji"}
 \usage{
 eea_plot(dane = wynik, paleta = "Set1", legenda = "right")
 }
@@ -15,7 +13,7 @@ eea_plot(dane = wynik, paleta = "Set1", legenda = "right")
 
 \item{paleta}{\itemize{
 \item character, argument dzieki któremu mozna zmienic palete barw
-dostepnosc palet mozna sprawdzic w helpie funkcji scale_color_brewer
+dostepnosc palet mozna sprawdzic w helpie funkcji 'scale_color_brewer'
 }}
 
 \item{legenda}{\itemize{
@@ -27,6 +25,11 @@ dostepne wartosci to: "none", "left", "right", "bottom", "top"
 plot
 }
 \description{
+Na podstawie wyniku funkcji "eea_szaco_emisji"
+wyswietla wykres rozrzutu zmiennej natezenie i obliczonej emisji
+z podzialem wedlug rodzaju zanieczyszczenia
+}
+\details{
 Przyjmuje nastepujace argumenty:
 }
 \examples{

@@ -1,0 +1,162 @@
+---
+title: "Wprowadzenie do `eeaemisje`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Wprowadzenie do eeaemisje}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>", 
+  echo = T, 
+  message = F, 
+  warning = F
+)
+```
+
+***
+
+**Krzysztof Zaczyk**
+
+**e-mail:** *[krzysztof.zaczyk7@gmail.com](krzysztof.zaczyk7@gmail.com)*.
+
+***
+# Kilka słów wprowadzenia
+***
+
+Na stronie [Europejska Agencja Środowiska](https://www.eea.europa.eu/) udostepnione sa dane o zanieczyszczeniach produkowanych przez pojazdy. Dane zostaly pobrane z [Dane emisja spalin](https://www.eea.europa.eu/themes/air/air-pollution-sources-1/emep-eea-air-pollutant-emission-inventory-guidebook). 
+
+Do pracy z tymi danymi zostaly stworzone dwie funkcje. Jak z nich korzystac przedstawie ponizej.
+
+
+***
+# Zainstaluj pakiet
+***
+
+Repozytorium pakietu znajduje się na portalu [github](https://github.com/). Zwiazku z tym potrzebny jest również pakiet `devtools`, który pobierze repozyrorium `eeeaemisje` i zainstaluje pakiet na twoim komputerze.
+
+```{r setup, eval=FALSE}
+# devtools, sprawdzamy czy jest, jeśli nie to instalujemy i wczytujemy
+if (!require(devtools)) {install.packages("devtools"); require(devtools)}
+# Instalujesz i wczytujesz
+install_git("https://github.com/rajder007/eeaemisje", force = T, build_vignettes = T)
+library(eeaemisje)
+```
+
+Poniższym polecenie wywoła w oknie pomocy listę funkcji pakietu, oraz ich skrócony opis. Można zauważyć, ze wszystkie nazwy funkcji zaczynają się od wyrażenia `eea_`, dzięli czemu bardzo szybko wyświetlają się w systemie podpowiedzi [Rstudio](https://rstudio.com/).
+
+```{r, eval=F}
+help(package = "eeaemisje")
+```
+
+Zalecam załadowanie ponizszych pakietów z których korzystam w tym poradniku.
+
+```{r, results='hide'}
+library(dplyr)
+library(ggplot2)
+library(stats)
+library(eeaemisje)
+```
+
+***
+# 1. Wskazniki
+***
+
+Zanim zaprezentuje dzialanie funkcji pakietu  `giosimport`, przedstawie zbior danych, na ktorym pracuje. 
+
+```{r, echo=FALSE}
+nazwa <- "C:/Users/Admin/Desktop/inwentaryzacjaemisji/zajecia1/dane.xlsx"
+
+wskazniki <- openxlsx::read.xlsx(xlsxFile = nazwa)
+
+wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
+
+wskazniki <- wskazniki %>%
+  select(-`EF.[g/km].or.ECF.[MJ/km]`,
+         -`Min.Speed.[km/h]`,
+         -`Max.Speed.[km/h]`,
+         -Road.Slope,
+         -Load)
+
+colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
+
+```
+
+```{r}
+dplyr::glimpse(wskazniki)
+```
+
+Powyzsza funkcja wczytala ramke danych zawierajaca informacje m.inn. o kategorii pojazdu emitujacego zanieczyszczenie, paliwie, segmencie samochodu, technologii silnika itd. 
+
+Aby zobaczyc opis kolumn skorzystaj z systemu pomocy:
+
+```{r, results='hide'}
+?"wskazniki"
+```
+
+***
+# 2. Funkcja eea_szaco_emisji 
+***
+Funkcja liczaca emisje. Na podstawie danych z EEA. Funkcja daje mozliwosc liczenia emisji ze wzgledu na rozne parametry,ktore mozna zmieniac dzieki argumentom, ktore funkcja przyjmuje. 
+
+Pierwszym argumentem, który przyjmuje funkcja jest data frame o nazwie "input", który mozna samodzielnie stworzyc. Przykladowy czesciowo losowy "input" jest zaprezentowany ponizej. Gdy uzytkownik nie poda tego argumentu, generowany zostaje wlasnie taki input jak ponizej. 
+
+```{r, eval=T}
+ input <- data.frame(Nat = rnorm(50, mean = 100, sd = 50),
+                     Segment = sample(c("Mini", "Small", "Medium", "Large-SUV-Executive"),
+                     size = 50, replace = TRUE),
+                     paliwo = "Petrol",
+                     technologia = "GDI")
+```
+
+A tutaj przyklad wywolania funkcji z pozostalymi parametrami, ktore mozna wprowadzac wedlug swoich potrzeb. 
+
+```{r, eval=T}
+
+wynik <- eea_szaco_emisji(input = input,
+                          kategoria = "Passenger Cars",
+                          euro = "Euro 5",
+                          mode = "",
+                          substancja = c("EC", "CO", "NOx", "VOC"))
+```
+
+Kiedy uzytkownik nie poda powyzszych argumentow, to funkcja domyslnie przyjmuje parametry jak w powyzszym przykladzie. 
+Ponizej przyklad wywolania funkcji bez podania argumentów.
+
+```{r, eval=T}
+
+wynik <- eea_szaco_emisji()
+```
+
+Wynikiem dzialania funkcji jest obiekt data frame, gdzie w ostatniej kolumnie o nazwie "emisja" jest obliczona emisja.
+
+Aby zobaczyc jakie wartosci moga przyjac argumenty, to nalezy sprawdzic unikalne wartosci kolumn w obiekcie "wskazniki" Na przyklad sprawdzenie wszystkich kategorii pojazdów, które wystepuja w zbiorze danych:
+
+```{r}
+unique(wskazniki$Category)
+
+```
+
+
+
+***
+# 3. Funkcja eea_plot
+***
+Na podstawie wyniku funkcji "eea_szaco_emisji" wyswietla wykres rozrzutu zmiennej natezenie i obliczonej emisji z podzialem wedlug rodzaju zanieczyszczenia. Pierwszym argumentem sa dane czyli obiekt data_frame, który powstal dzieki wczesniejszej funkcji, drugim parametrem jest paleta barw, dzieki ktorej ma zostac wyswietlony wynik, trzecim parametrem jest umiejscowienie legendy wykresu.
+Aby zobaczyc jakie wartosci moga przyjmowac argumenty funkcji- skorzystaj z systemu pomocy dla tej funkcji.
+Ponizej przyklad uzycia: (kiedy uzytkownik nie poda zadnych argumentow funkcja domyslnie przyjmuje wartosci argumentow jak w ponizszym przykladzie)
+
+```{r, eval=T}
+
+eea_plot(dane = wynik, paleta = "Set1", legenda = "right")
+```
+
+Wynikiem funckji jest powyzszy wykres. 
+
+
+
+
