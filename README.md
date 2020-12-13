@@ -7,53 +7,49 @@
 
 <!-- badges: end -->
 
-The goal of eeaemisje is to …
+Celem pakietu `eeaemisje` jest obliczanie emisji na podstawie danych z
+EEA. Aby ulatwic prace z pakietem stworzona zostala winieta i system
+pomocy, ponizej szczególy.
 
-## Installation
-
-You can install the released version of eeaemisje from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("eeaemisje")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+# Instalacja (szybka)
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("rajder007/eeaemisje")
-```
+# Potrzebujesz devtools ?
+if (!require(devtools)) {install.packages("devtools"); require(devtools)}
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
+# Instalujesz i wczytujesz
+install_git("https://github.com/rajder007/eeaemisje")
 library(eeaemisje)
-## basic example codde
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Teraz mozesz korzystac z systemu pomocy.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+?"eeaemisje"
+?"eea_szaco_emisji"
+?"eea_plot"
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+# Instalacja wraz z winietą (wolna)
 
-You can also embed plots, for example:
+``` r
+# Potrzebujesz devtools ?
+if (!require(devtools)) {install.packages("devtools"); require(devtools)}
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+# Instalujesz i wczytujesz
+install_git("https://github.com/rajder007/eeaemisje", force = T, build_vignettes = T)
+library(eeaemisje)
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+Teraz mozesz korzystac z rozbudowanego systemu pomocy.
+
+``` r
+# Podgląd winiety w przeglądarce
+browseVignettes("eeaemisje")
+
+# przejrzyj w oknie pomocy
+vignette("eeaemisje")
+
+# wyswietli tylko kod
+edit(vignette("eeaemisje"))
+```

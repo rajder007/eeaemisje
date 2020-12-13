@@ -7,7 +7,7 @@
 #'
 #' @param dane - data frame, jest to wynik funkcji "eea_szaco_emisji"
 #' @param paleta - character, argument dzieki któremu mozna zmienic palete barw
-#' dostepnosc palet mozna sprawdzic w helpie funkcji scale_color_brewer
+#' dostepnosc palet mozna sprawdzic w helpie funkcji 'scale_color_brewer'
 #' @param legenda - character, argument zmieniajacy pozycje legendy
 #' dostepne wartosci to: "none", "left", "right", "bottom", "top"
 #'

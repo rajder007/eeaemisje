@@ -18,43 +18,50 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of eeaemisje is to ...
+Celem pakietu `eeaemisje` jest obliczanie emisji na podstawie danych z EEA. Aby ulatwic prace z pakietem stworzona zostala winieta i system pomocy, ponizej szczególy. 
 
-## Installation
 
-You can install the released version of eeaemisje from [CRAN](https://CRAN.R-project.org) with:
+# Instalacja (szybka)
 
-``` r
-install.packages("eeaemisje")
-```
+```{r setup, eval=FALSE}
+# Potrzebujesz devtools ?
+if (!require(devtools)) {install.packages("devtools"); require(devtools)}
 
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("rajder007/eeaemisje")
-```
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+# Instalujesz i wczytujesz
+install_git("https://github.com/rajder007/eeaemisje")
 library(eeaemisje)
-## basic example codde
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
+Teraz mozesz korzystac z systemu pomocy.
+
+```{r, eval=F}
+?"eeaemisje"
+?"eea_szaco_emisji"
+?"eea_plot"
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
 
-You can also embed plots, for example:
+# Instalacja wraz z winietą (wolna)
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r, eval=F}
+# Potrzebujesz devtools ?
+if (!require(devtools)) {install.packages("devtools"); require(devtools)}
+
+# Instalujesz i wczytujesz
+install_git("https://github.com/rajder007/eeaemisje", force = T, build_vignettes = T)
+library(eeaemisje)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+Teraz mozesz korzystac z rozbudowanego systemu pomocy.
+
+```{r, eval=FALSE}
+# Podgląd winiety w przeglądarce
+browseVignettes("eeaemisje")
+
+# przejrzyj w oknie pomocy
+vignette("eeaemisje")
+
+# wyswietli tylko kod
+edit(vignette("eeaemisje"))
+```

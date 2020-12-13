@@ -43,7 +43,7 @@ eea_szaco_emisji <- function(input = data.frame(Nat = rnorm(50, mean = 100, sd =
                              kategoria = "Passenger Cars",
                              euro = "Euro 5",
                              mode = "",
-                             substancja = c("EC", "CO")) {
+                             substancja = c("EC", "CO", "NOx", "VOC")) {
 
   #Zabezpieczenia przed blednymi argumentami funkcji
 
